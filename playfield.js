@@ -21,7 +21,7 @@ class Playfield {
     }
 
     clearLines() {
-        linetest(); // Presumably line-clearing logic, adjust if needed
+        linetest();
     }
 
     isValid(piece) {
