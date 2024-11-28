@@ -3,26 +3,20 @@ function replaceStringIn2DArray(arr, textToReplace, replacementText) {
         row.map(item => (item === textToReplace ? replacementText : item))
     );
 }
-
-// Piece Class
 class Piece {
     constructor(type, playfield) {
-        // Piece Properties
         this.type = type;
         this.color = random(tetrisColors);
         this.cells = replaceStringIn2DArray(types[type], '#f43', this.color);
         this.size = this.cells.length; // Assumes square matrix
         this.cellSize = playfield.cellSize;
         this.offset = playfield.borderSize;
-
-        // Position and Gravity
         this.x = floor((playfield.cols - this.size) / 2);
         this.y = 0;
         this.dropInterval = 200; // in ms
         this.dropBuffer = 0; // Time since last drop
     }
 
-    // Update Drop Buffer
     update(time) {
         this.dropBuffer += time;
     }
@@ -30,12 +24,9 @@ class Piece {
     timeToFall() {
         return this.dropBuffer > this.dropInterval;
     }
-
     resetBuffer() {
         this.dropBuffer = 0;
     }
-
-    // Show Piece on Playfield
     show() {
         for (let row = 0; row < this.size; row++) {
             for (let col = 0; col < this.size; col++) {
@@ -48,25 +39,17 @@ class Piece {
                     fill(this.cells[row][col]);
                     stroke(this.cells[row][col]);
                     rect(off + cs * x, off + cs * y, cs - 1, cs - 1);
-                }
-            }
-        }
-    }
-
-    // Movement Methods
+                } } }}
     moveDown() { this.y++; }
     moveRight() { this.x++; }
     moveLeft() { this.x--; }
     moveUp() { this.y--; }
-
-    // Rotation Methods
     rotateCW() {
         let newCells = [];
         for (let col = 0; col < this.size; col++) {
             let newRow = [];
             for (let row = this.size - 1; row >= 0; row--) {
-                newRow.push(this.cells[row][col]);
-            }
+                newRow.push(this.cells[row][col]); }
             newCells.push(newRow);
         }
         this.cells = newCells;
