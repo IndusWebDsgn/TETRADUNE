@@ -7,9 +7,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        transform: scale(0.5); /* Scales down by 50% */
-        transform-origin: top left; /* Ensures scaling starts from the top left corner */
-        overflow: hidden; /* Hides any content spilling out */
+        transform: scale(0.5);
+        transform-origin: top left;
+        overflow: hidden;
     }
 
     .navbar {
