@@ -1,50 +1,25 @@
-function replaceStringIn2DArray(arr, textToReplace, replacementText) {
-    return arr.map(row => 
-        row.map(item => (item === textToReplace ? replacementText : item))
-    );
-}
-
-// Piece Class
 class Piece {
     constructor(type, playfield) {
-        // Piece Properties
         this.type = type;
         this.color = random(tetrisColors);
         this.cells = replaceStringIn2DArray(types[type], '#f43', this.color);
-        this.size = this.cells.length; // Assumes square matrix
+        this.size = this.cells.length;
         this.cellSize = playfield.cellSize;
         this.offset = playfield.borderSize;
-
-        // Position and Gravity
-        this.x = floor((playfield.cols - this.size) / 2);
+        this.x = Math.floor((playfield.cols - this.size) / 2);
         this.y = 0;
-        this.dropInterval = 200; // in ms
-        this.dropBuffer = 0; // Time since last drop
-    }
-
-    // Update Drop Buffer
-    update(time) {
-        this.dropBuffer += time;
-    }
-
-    timeToFall() {
-        return this.dropBuffer > this.dropInterval;
-    }
-
-    resetBuffer() {
+        this.dropInterval = 200;
         this.dropBuffer = 0;
     }
-
-    // Show Piece on Playfield
+    update(time) { this.dropBuffer += time; }
+    timeToFall() { return this.dropBuffer > this.dropInterval; }
+    resetBuffer() { this.dropBuffer = 0; }
     show() {
         for (let row = 0; row < this.size; row++) {
             for (let col = 0; col < this.size; col++) {
                 if (this.cells[row][col]) {
-                    let x = this.x + col;
-                    let y = this.y + row;
-                    let cs = this.cellSize;
-                    let off = this.offset;
-
+                    const x = this.x + col, y = this.y + row;
+                    const cs = this.cellSize, off = this.offset;
                     fill(this.cells[row][col]);
                     stroke(this.cells[row][col]);
                     rect(off + cs * x, off + cs * y, cs - 1, cs - 1);
@@ -53,180 +28,59 @@ class Piece {
         }
     }
 
-    // Movement Methods
     moveDown() { this.y++; }
     moveRight() { this.x++; }
     moveLeft() { this.x--; }
     moveUp() { this.y--; }
 
-    // Rotation Methods
     rotateCW() {
-        let newCells = [];
-        for (let col = 0; col < this.size; col++) {
-            let newRow = [];
-            for (let row = this.size - 1; row >= 0; row--) {
-                newRow.push(this.cells[row][col]);
-            }
-            newCells.push(newRow);
-        }
-        this.cells = newCells;
+        this.cells = this.cells[0].map((_, col) =>
+            this.cells.map(row => row[col]).reverse()
+        );
     }
 
     rotateCCW() {
-        let newCells = [];
-        for (let col = this.size - 1; col >= 0; col--) {
-            let newRow = [];
-            for (let row = 0; row < this.size; row++) {
-                newRow.push(this.cells[row][col]);
-            }
-            newCells.push(newRow);
-        }
-        this.cells = newCells;
+        this.cells = this.cells[0].map((_, col) =>
+            this.cells.map(row => row[row.length - 1 - col])
+        );
     }
 }
-
-let types = {
-
-    O: [
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-
-    ],
-
-
+const types = {
+    O: Array(8).fill(Array(8).fill('#f43')),
     J: [
-        ['#f43', '#f43', '#f43', '#f43', null, null, null, null, null, null, null, null],
-        ['#f43', '#f43', '#f43', '#f43', null, null, null, null, null, null, null, null],
-        ['#f43', '#f43', '#f43', '#f43', null, null, null, null, null, null, null, null],
-        ['#f43', '#f43', '#f43', '#f43', null, null, null, null, null, null, null, null],
-
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-
+        ...Array(4).fill(Array(12).fill('#f43').slice(0, 4)),
+        ...Array(4).fill(Array(12).fill('#f43')),
+        ...Array(4).fill(Array(12).fill(null))
     ],
-
-
     L: [
-        [null, null, null, null, null, null, null, null, '#f43', '#f43', '#f43', '#f43'],
-        [null, null, null, null, null, null, null, null, '#f43', '#f43', '#f43', '#f43'],
-        [null, null, null, null, null, null, null, null, '#f43', '#f43', '#f43', '#f43'],
-        [null, null, null, null, null, null, null, null, '#f43', '#f43', '#f43', '#f43'],
-
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null, null, null],
+        ...Array(4).fill([...Array(8).fill(null), ...Array(4).fill('#f43')]),
+        ...Array(4).fill(Array(12).fill('#f43')),
+        ...Array(4).fill(Array(12).fill(null))
     ],
-
-
     S: [
-        [null, null, null, null, '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        [null, null, null, null, '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        [null, null, null, null, '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        [null, null, null, null, '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', null, null, null, null],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', null, null, null, null],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', null, null, null, null],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', null, null, null, null],
-
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null, null, null],
+        ...Array(4).fill([...Array(4).fill(null), ...Array(8).fill('#f43')]),
+        ...Array(4).fill([...Array(8).fill('#f43'), ...Array(4).fill(null)]),
+        ...Array(4).fill(Array(12).fill(null))
     ],
-
-
     Z: [
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', null, null, null, null],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', null, null, null, null],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', null, null, null, null],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', null, null, null, null],
-
-        [null, null, null, null, '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        [null, null, null, null, '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        [null, null, null, null, '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        [null, null, null, null, '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null, null, null],
+        ...Array(4).fill([...Array(8).fill('#f43'), ...Array(4).fill(null)]),
+        ...Array(4).fill([...Array(4).fill(null), ...Array(8).fill('#f43')]),
+        ...Array(4).fill(Array(12).fill(null))
     ],
-
-
     T: [
-        [null, null, null, null, '#f43', '#f43', '#f43', '#f43', null, null, null, null],
-        [null, null, null, null, '#f43', '#f43', '#f43', '#f43', null, null, null, null],
-        [null, null, null, null, '#f43', '#f43', '#f43', '#f43', null, null, null, null],
-        [null, null, null, null, '#f43', '#f43', '#f43', '#f43', null, null, null, null],
-
-
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-
-
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null, null, null],
+        ...Array(4).fill([...Array(4).fill(null), ...Array(4).fill('#f43'), ...Array(4).fill(null)]),
+        ...Array(4).fill(Array(12).fill('#f43')),
+        ...Array(4).fill(Array(12).fill(null))
     ],
-
-
     I: [
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-
-
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-        ['#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43', '#f43'],
-
-
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null, null, null, null],
-
-
+        ...Array(4).fill(Array(12).fill(null)),
+        ...Array(4).fill(Array(12).fill('#f43')),
+        ...Array(4).fill(Array(12).fill(null))
     ]
-
-}
-
+};
 
 function replaceStringIn2DArray(arr, textToReplace, replacementText) {
-    const replacedArray = arr.map(row => {
-        return row.map(item => {
-            if (item === textToReplace) {
-                return replacementText;
-            }
-            return item;
-        });
-    });
-    return replacedArray;
+    return arr.map(row =>
+        row.map(item => (item === textToReplace ? replacementText : item))
+    );
 }
-
