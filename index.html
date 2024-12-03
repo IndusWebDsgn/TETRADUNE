@@ -41,11 +41,6 @@
             background-color: #2210869c;
         }
 
-        .navbar-brand {
-            font-weight: 600;
-            color: #fff !important;
-        }
-
         .card {
             position: relative;
             border-radius: 12px;
@@ -124,6 +119,36 @@
         .button-panel button:hover {
             background-color: rgba(0, 0, 0, 0.8);
         }
+
+        .controls-box {
+            position: absolute;
+            top: 250px;
+            left: 840px;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-family: 'Pixelify Sans', sans-serif;
+            color: white;
+            font-size: 2rem;
+            text-align: left;
+            width: 250px;
+        }
+
+        .controls-box ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        .controls-box li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .controls-box span {
+            font-weight: bold;
+            color: #ffd500;
+        }
     </style>
 </head>
 
@@ -137,13 +162,20 @@
         <div class="game-title">
             TETRADUNES
         </div>
-        <!-- Game Area -->
+        <!-- Controls Box -->
+        <div class="controls-box">
+            <h3>CONTROLS</h3>
+            <ul>
+                <li><span>↑</span> Rotate Piece</li>
+                <li><span>↓</span> Fall Faster</li>
+                <li><span>←</span> Shift Left</li>
+                <li><span>→</span> Shift Right</li>
+            </ul>
+        </div>
         <div id="canvasBox"></div>
-        <!-- Score Box -->
         <div class="score-box">
             SCORE: <span id="scoreui">0</span>
         </div>
-        <!-- Button Panel -->
         <div class="button-panel">
             <button id="pausebtn">PAUSE</button>
             <button id="resetbtn">RESTART</button>
@@ -151,7 +183,6 @@
         </div>
     </div>
 
-    <!-- Scripts -->
     <script defer>
         document.getElementById("scrshotbtn").addEventListener("click", () => {
             console.log("Screenshot functionality coming soon!");
