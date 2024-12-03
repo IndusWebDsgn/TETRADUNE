@@ -38,7 +38,7 @@ Tetradunes is a unique and engaging twist on the classic block-stacking puzzle g
 - **Processor**: 1.5 GHz or better.
 - **Memory**: 2 GB RAM.
 - **Graphics**: Integrated or dedicated GPU.
-- **Storage**: 100 MB free space.
+
 
 ---
 
