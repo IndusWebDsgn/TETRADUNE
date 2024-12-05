@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetradunes - How to Play</title>
+    <style>
+        /* Import Pixelify Sans font */
+        @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
+
+        /* General Reset */
+        body {
+            margin: 0;
+            font-family: 'Pixelify Sans', sans-serif;
+            color: white;
+            background: url('wallpaperflare.com_wallpaper.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .info-box {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        .info-box h1 {
+            margin-top: 0;
+            font-size: 3.5rem;
+        }
+
+        .info-box p {
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+
+        .info-box p span {
+            font-weight: bold;
+            color: #ffd500;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-decoration: none;
+            font-size: 2.2rem;
+            padding: 10px 15px;
+            border-radius: 3px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #ffd500;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">BACK</a>
+    <div class="info-box">
+        <h1>Welcome to TETRADUNES</h1>
+        <p>
+            Tetradunes is an exciting game inspired by the classic Sandtrix. 
+            In this game, you’ll guide falling blocks of various shapes to fit perfectly into the rows below. 
+            Clear rows to score points and avoid letting the blocks reach the top of the screen!
+        </p>
+        <p>
+            Use the following controls to play:
+            <h3>CONTROLS</h3>
+            <span style="font-weight: bold; color: #ffd500;">↑</span> Rotate Piece<br>
+            <span style="font-weight: bold; color: #ffd500;">↓</span> Fall Faster<br>
+            <span style="font-weight: bold; color: #ffd500;">←</span> Shift Left<br>
+            <span style="font-weight: bold; color: #ffd500;">→</span> Shift Right
+        </p>
+        <p>Challenge yourself and see how many rows you can clear in TETRADUNES!</p>
+    </div>
+</body>
+</html>
