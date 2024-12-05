@@ -94,7 +94,7 @@
 
         .button-panel {
             position: absolute;
-            top: 755px;
+            top: 680px;
             right: -301px;
             display: flex;
             flex-direction: column;
@@ -117,8 +117,10 @@
         }
 
         .button-panel button:hover {
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
         }
+
 
         .controls-box {
             position: absolute;
@@ -178,16 +180,13 @@
         </div>
         <div class="button-panel">
             <button id="pausebtn">PAUSE</button>
-            <button id="resetbtn">RESTART</button>
-            <button id="scrshotbtn"></button>
+            <button onClick="window.location.reload();" id="resetbtn">RESTART</button>
+            <button id="scrshotbtn" onclick="location.href='index.html'">HOME</button>
+
         </div>
     </div>
 
-    <script defer>
-        document.getElementById("scrshotbtn").addEventListener("click", () => {
-            console.log("Screenshot functionality coming soon!");
-        });
-    </script>
+
     <script defer src="./playfield.js"></script>
     <script defer src="./piece.js"></script>
     <script defer src="./handleinput.js"></script>
