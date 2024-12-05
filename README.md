@@ -1,8 +1,5 @@
 # Tetradunes
-This is a game which works just like Tetris but with a twist, the blocks here are made up of sand!!!
-
-Tetradunes is a unique and engaging twist on the classic block-stacking puzzle game. Set in a serene desert landscape, players guide and arrange falling blocks to form complete rows and keep the board clear. Can you handle the heat and master the dunes?
-
+Tetradunes is an exciting game inspired by the classic Sandtrix. In this game, you’ll guide falling blocks of various shapes to fit perfectly into the rows below. Clear rows to score points and avoid letting the blocks reach the top of the screen!
 ---
 
 ## 🎮 Gameplay Overview
