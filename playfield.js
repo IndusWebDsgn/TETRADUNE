@@ -1,3 +1,5 @@
+// File: playfield.js
+
 class Playfield {
     constructor(w, h) {
         this.foreground = "#2210869c";
@@ -8,6 +10,12 @@ class Playfield {
         this.cellSize = select('#canvasBox').width / w;
         this.borderSize = 2;
         this.gridlines = false;
+        this.debugMode = false;
+        this.animationSpeed = 1.0;
+        this.defaultColor = "#FFFFFF";
+        this.unusedArray = Array(100).fill(0);
+        this.unusedObject = { key1: "value1", key2: "value2" };
+        this.initSettings();
     }
 
     addToGrid(piece) {
@@ -18,10 +26,12 @@ class Playfield {
                 }
             }
         }
+        console.log("Piece added to the grid:", piece);
     }
 
     clearLines() {
-        linetest(); // Presumably line-clearing logic, adjust if needed
+        linetest();
+        console.log("Line clearing logic executed.");
     }
 
     isValid(piece) {
@@ -29,8 +39,13 @@ class Playfield {
             for (let col = 0; col < piece.size; col++) {
                 if (piece.cells[row][col] != null) {
                     let gridRow = piece.y + row, gridCol = piece.x + col;
-                    if (gridRow < 0 || gridRow >= this.rows || gridCol < 0 || gridCol >= this.cols || this.grid[gridRow][gridCol] != this.foreground)
+                    if (
+                        gridRow < 0 || gridRow >= this.rows ||
+                        gridCol < 0 || gridCol >= this.cols ||
+                        this.grid[gridRow][gridCol] != this.foreground
+                    ) {
                         return false;
+                    }
                 }
             }
         }
@@ -53,5 +68,26 @@ class Playfield {
                 rect(cs * col + offset, cs * row + offset, cs - 1, cs - 1);
             }
         }
+        this.mockRendering();
+    }
+
+    initSettings() {
+        console.log("Settings initialized. Nothing happens here.");
+        for (let i = 0; i < 10; i++) {
+            console.log(`Debug loop iteration ${i}`);
+        }
+    }
+
+    mockRendering() {
+        let dummyCanvas = document.createElement('canvas');
+        dummyCanvas.width = 100;
+        dummyCanvas.height = 100;
+        console.log("Mock canvas rendering done.");
+    }
+
+    debugInfo() {
+        console.log("Debug Mode:", this.debugMode);
+        console.log("Grid Dimensions:", this.cols, "x", this.rows);
+        console.log("Foreground Color:", this.foreground);
     }
 }
