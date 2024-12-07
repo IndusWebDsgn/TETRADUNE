@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +7,12 @@
     <link rel="icon" type="image/png" href="./logo.png">
     <link href='https://fonts.googleapis.com/css?family=Pixelify Sans' rel='stylesheet'>
 
+    <!-- p5.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"
         integrity="sha512-M7uzkKVt12bO/ClDOwaTk0AUwDPmJzjxri/KQKft2cisI6q3zJ4KxX3IfSQXF9Z6WU6NNW67JAljgWrA4WiiOA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    <!-- Inline Styles -->
     <style>
         @font-face {
             font-family: 'Pixelify Sans';
@@ -36,7 +37,7 @@
             position: absolute;
             top: 0;
             width: 100%;
-            background-color: #2210869c;
+            background-color: #f7def1c2;
         }
 
         .card {
@@ -187,8 +188,16 @@
 
     <script defer src="./playfield.js"></script>
     <script defer src="./piece.js"></script>
-    <script defer src="./handleinput.js"></script>
-    <script defer src="./script.js"></script>
+    <script defer src="./handleinput.js"></script>    
+    <script defer src="./setup.js"></script>
+    
+    <script src="./uiHandlers.js"></script>
+
+    <script src="globals.js"></script>
+    <script src="setup1.js"></script>
+    <script src="pieceManagement.js"></script>
+    <script src="gridRules.js"></script>
+    <script src="gameLoop.js"></script>
 </body>
 
-</html>  
+</html>
