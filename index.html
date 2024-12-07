@@ -15,6 +15,7 @@
             background-size: cover;
             color: white;
             overflow: hidden;
+            height: 100vh;
         }
 
         .game-title {
@@ -23,33 +24,33 @@
             top: 50%;
             transform: translateY(-50%) rotate(-90deg);
             background-color: rgba(0, 0, 0, 0.8);
-            padding: 10px 20px;
+            padding: 2vh 4vw;
             text-align: center;
-            font-size: 4.5rem;
+            font-size: 4.5vw;
+            border-radius: 0.1vw;
         }
 
         .button-container {
             position: absolute;
-            left: 70%;
+            left: 70vw;
             top: 50%;
             transform: translate(-50%, -50%);
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 2vh;
         }
 
         .button-container a {
             text-decoration: none;
             display: inline-block;
-            padding: 10px 20px;
-            font-size: 3rem;
+            padding: 1.5vh 3vw;
+            font-size: 2.5vw;
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
             border: none;
-            border-radius: 3px;
+            border-radius: 0vw;
             cursor: pointer;
-            transition: background-color 0.3s;
-            font-family: 'Pixelify Sans', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
             text-align: center;
         }
 
@@ -60,11 +61,11 @@
 
         .footer-text {
             position: absolute;
-            bottom: 5%;
+            bottom: 5vh;
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
-            font-size: 2rem;
+            font-size: 2vw;
         }
 
         .footer-text span {
@@ -73,7 +74,7 @@
 
         .emoji {
             position: absolute;
-            font-size: 1.5rem;
+            font-size: 2vw;
             pointer-events: none;
         }
     </style>
@@ -81,7 +82,7 @@
 <body>
     <div class="game-title">TETRADUNES</div>
     <div class="button-container">
-        <a href="game.html">Play Game</a>
+        <a href="theme.html">Play Game</a>
         <a href="howto.html">How to Play</a>
         <a href="https://raw.githubusercontent.com/IndusWebDsgn/TETRADUNE/refs/heads/main/README.md" target="_blank">About</a>
         <a href="https://github.com/IndusWebDsgn/TETRADUNE" target="_blank">GitHub Repository</a>
