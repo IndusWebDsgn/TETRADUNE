@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetradunes - Select Game Mode</title>
+    <style>
+        /* Import Pixelify Sans font */
+        @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playwrite+HR:wght@100..400&display=swap');
+
+        /* General Reset */
+        body {
+            margin: 0;
+            font-family: 'Pixelify Sans', sans-serif;
+            color: white;
+            background: url('wallpaperflare.com_wallpaper.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            margin: 2vh 0;
+            font-size: 6vw;
+            text-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1vh 2vw;
+            border-radius: 0.5vw;
+        }
+
+        .card-container {
+            display: flex;
+            gap: 3vw;
+            justify-content: center;
+            align-items: center;
+            margin-top: 8vh;
+        }
+
+        .card {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 1vw;
+            box-shadow: 0 0.5vw 2vw rgba(0, 0, 0, 0.6);
+            text-align: center;
+            padding: 2vh 2vw;
+            width: 25vw;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 1vw;
+        }
+
+        .card h2 {
+            font-size: 2vw;
+            margin: 1.5vh 0;
+        }
+
+        .card h3 {
+            font-size: 1.8vw;
+            margin: 1.5vh 0;
+            font-family: "Playwrite HR", cursive;
+        }
+
+        .choose-button, .choose-button2 {
+            display: inline-block;
+            margin-top: 1vh;
+            padding: 1.5vh 2vw;
+            text-decoration: none;
+            font-size: 2.2vw;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 0.5vw;
+            border: 0.2vw solid;
+            color: white;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .choose-button {
+            border-color: #ffd500;
+        }
+
+        .choose-button:hover {
+            background-color: #ffa500;
+        }
+
+        .choose-button2 {
+            font-family: "Playwrite HR", cursive;
+            border-color: #ca59ae;
+            font-size: 1.6vw;
+        }
+
+        .choose-button2:hover {
+            background-color: #ee8ad5;
+        }
+
+        /* Back Button Styles */
+        .back-button {
+            position: absolute;
+            top: 2vh;
+            left: 2vw;
+            text-decoration: none;
+            font-size: 1.8vw;
+            font-weight: bold;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 1.5vh 2vw;
+            border-radius: 0.2vw;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <a href="index.html" class="back-button">← Back</a>
+    
+    <h1>THEME</h1>
+    <div class="card-container">
+        <div class="card">
+            <img src="og_tetris.jpg" alt="OG Tetris">
+            <h2>OG TETRIS</h2>
+            <a href="game.html" class="choose-button">Choose</a>
+        </div>
+
+        <div class="card">
+            <img src="catland.jpg" alt="CatLand">
+            <h3>CatLand</h3>
+            <a href="catgame.html" class="choose-button2">Choose</a>
+        </div>
+    </div>
+</body>
+</html>
