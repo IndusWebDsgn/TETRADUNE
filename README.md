@@ -29,17 +29,3 @@ Tetradunes is an exciting game inspired by the classic Sandtrix. In this game, y
 
 ---
 
-## 🛠️ System Requirements
-
-- **Operating System**: Windows 7/10/11, macOS, or Linux.
-- **Processor**: 1.5 GHz or better.
-- **Memory**: 2 GB RAM.
-- **Graphics**: Integrated or dedicated GPU.
-
-
----
-
-## 🛑 Known Issues
-
-- Occasionally, blocks may glitch when interacting with sand. (Fix in progress.)
-
