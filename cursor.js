@@ -4,7 +4,7 @@ const emojiData = Array.from(emojis).map((_, i) => ({
     y: window.innerHeight / 2,
     vx: 0,
     vy: 0,
-    offsetX: (i - 4.5) * 30 
+    offsetX: (i - 4.5) * 30
 }));
 
 const cursor = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
@@ -26,6 +26,7 @@ function animate() {
             emoji.vx += dx * speed / distance;
             emoji.vy += dy * speed / distance;
         }
+
         emoji.vx *= friction;
         emoji.vy *= friction;
 

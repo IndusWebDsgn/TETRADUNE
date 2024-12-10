@@ -2,14 +2,14 @@
     body {
         font-family: 'Inter', sans-serif;
         background-color: #f8f9fa;
-        height: 100vh;
+        height: 100vh; 
         margin: 0;
         display: flex;
         justify-content: center;
         align-items: center;
-        transform: scale(0.5);
-        transform-origin: top left;
-        overflow: hidden;
+        transform: scale(0.5); 
+        transform-origin: top left; 
+        overflow: hidden; 
     }
 
     .navbar {
@@ -46,7 +46,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 20px;
+        gap: 20px; 
     }
 
     .score-box {
@@ -54,15 +54,15 @@
         border-radius: 12px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         padding: 20px;
-        width: 150px;
+        width: 150px; 
         text-align: center;
-        font-size: 1.2rem;
+        font-size: 1.2rem; 
     }
 
     .button-panel {
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: 15px; 
     }
 
     .button-panel button {

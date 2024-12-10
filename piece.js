@@ -8,7 +8,7 @@ class Piece {
         this.offset = playfield.borderSize;
         this.x = Math.floor((playfield.cols - this.size) / 2);
         this.y = 0;
-        this.dropInterval = 200;
+        this.dropInterval = 80;
         this.dropBuffer = 0;
     }
     update(time) { this.dropBuffer += time; }

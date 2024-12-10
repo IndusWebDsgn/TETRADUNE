@@ -49,6 +49,7 @@ const tetrisColors = [
     "#ffd500c0",    // Yellow
     "#20a805dc",    // Green
     "#be3005dc"     // Red
+    
 ];
 
 function getLeftSideCells(grid) {

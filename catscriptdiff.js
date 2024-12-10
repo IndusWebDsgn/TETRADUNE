@@ -196,7 +196,9 @@ const tetrisColors = [
     "#3b6dcaaf",    // Blue
     "#d30f0fc2",    // Red
     "#b960259c",    // Brown
-    " #f7def1c2"    // White
+    "#f7def1c2",    // White
+    "#4586109c",    // Green
+    "#d8c3089c"     // Yellow
 ];
 function getLeftSideCells(grid) {
     const leftSideCells = [];

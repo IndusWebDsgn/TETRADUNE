@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>Sand Tetris Demo</title>
+    <link rel="icon" type="image/png" href="./logo.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+HR:wght@100..400&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"
+        integrity="sha512-M7uzkKVt12bO/ClDOwaTk0AUwDPmJzjxri/KQKft2cisI6q3zJ4KxX3IfSQXF9Z6WU6NNW67JAljgWrA4WiiOA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+        body {
+            font-family: "Playwrite HR", cursive;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: scale(0.75);
+            transform-origin: center;
+            background-image: url('https://marketplace.canva.com/EAFJZ0dhmTQ/1/0/1600w/canva-pink-illustrated-cat-desktop-wallpaper-erWL1KR5XhI.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .navbar {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background-color: #86104b9c;
+        }
+
+        .card {
+            position: relative;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #canvasBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #e981b59c;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 544px;
+            height: 964px;
+        }
+
+        .game-title {
+            position: absolute;
+            top: 400px;
+            left: -550px;
+            transform: rotate(-90deg);
+            font-family: "Playwrite HR", cursive;
+            font-size: 4.6rem;
+            color: white;
+            text-shadow: 4px 4px 8px rgba(238, 66, 123, 0.815);
+            text-align: center;
+            background: rgba(233, 96, 160, 0.8);
+            padding: 15px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .score-box {
+            position: absolute;
+            top: -5px;
+            right: -281px;
+            background-color: rgba(233, 96, 160, 0.8);
+            border-radius: 2px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 280px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            text-align: center;
+            font-weight: bold;
+            font-family: "Playwrite HR", cursive;
+            color: white;
+        }
+
+        .button-panel {
+            position: absolute;
+            top: 680px;
+            right: -301px;
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+            width: 300px;
+        }
+
+        .button-panel button {
+            font-size: 2.85rem;
+            padding: 10px;
+            border-radius: 2px;
+            border: none;
+            background-color: rgba(233, 96, 160, 0.8);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-family: "Playwrite HR", cursive;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .button-panel button:hover {
+            background-color: rgba(241, 181, 209, 0.8);
+            color: rgb(87, 13, 41);
+        }
+
+        .controls-box {
+            position: absolute;
+            top: 190px;
+            right: 920px;
+            background-color: rgba(233, 96, 160, 0.8);
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-family: "Playwrite HR", cursive;
+            color: white;
+            font-size: 1.8rem;
+            text-align: left;
+            width: 250px;
+            font-weight: bold;
+        }
+
+        .controls-box ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        .controls-box li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .controls-box span {
+            font-weight: bold;
+            color: rgb(87, 13, 41);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg mb-4"></nav>
+
+    <!-- Main Content -->
+    <div class="card">
+        <!-- Game Title -->
+        <div class="game-title">
+            TETRADUNES
+        </div>
+        <!-- Controls Box -->
+        <div class="controls-box">
+            <h3>CONTROLS</h3>
+            <ul>
+                <li><span>↑</span> Rotate Piece</li>
+                <li><span>↓</span> Fall Faster</li>
+                <li><span>←</span> Shift Left</li>
+                <li><span>→</span> Shift Right</li>
+            </ul>
+        </div>
+        <div id="canvasBox"></div>
+        <div class="score-box">
+            Score: <span id="scoreui">0</span>
+        </div>
+        <div class="button-panel">
+            <button id="pausebtn">Pause</button>
+            <button onClick="window.location.reload();" id="resetbtn">Restart</button>
+            <button id="scrshotbtn" onclick="location.href='index.html'">Home</button>
+        </div>
+    </div>
+    <script defer>
+        document.getElementById("scrshotbtn").addEventListener("click", () => {
+            console.log("Screenshot functionality coming soon!");
+        });
+    </script>
+    <script defer src="./catplayfield.js"></script>
+    <script defer src="./catpiece.js"></script>
+    <script defer src="./handleinput.js"></script>
+    <script defer src="./catscriptdiff.js"></script>
+</body>
+
+</html>

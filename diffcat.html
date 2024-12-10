@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Difficulty</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Pixelify Sans', sans-serif;
+            background: url('wallpaperflare.com_wallpaper.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            overflow: hidden;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 2vh;
+            left: 2vw;
+            text-decoration: none;
+            font-size: 2vw;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 1vh 2vw;
+            border-radius: 0.5vw;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
+        }
+
+        h1 {
+            font-size: 4vw;
+            margin-bottom: 3vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 1vh 2vw;
+            border-radius: 0.1vw;
+            text-align: center;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 4vw;
+            margin-top: 20vh;
+        }
+
+        .button-container div {
+            text-align: center;
+        }
+
+        .button-container a {
+            text-decoration: none;
+            display: inline-block;
+            padding: 2vh 5vw;
+            font-size: 3vw;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 0.1vw;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            text-align: center;
+        }
+
+        .button-container a:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
+        }
+
+        .recommended {
+            font-size: 1.8vw;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 1vh;
+        }
+    </style>
+</head>
+<body>
+    <a href="theme.html" class="back-button">⬅ Back</a>
+    <h1>Choose Difficulty</h1>
+    <div class="button-container">
+        <div>
+            <a href="catgame.html">Normal</a>
+            <div class="recommended">!!Recommended!!</div>
+        </div>
+        <div>
+            <a href="catgamediff.html">Hard</a>
+        </div>
+    </div>
+</body>
+</html>
