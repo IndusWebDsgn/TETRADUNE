@@ -1,3 +1,7 @@
+!!AI is used to make this readme!!
+!!AI is used to make some parts of this game!!
+!!This game is inspired by Sandtrix!!
+You can play it for free at:https://www.sandtrix.net/
 # Tetradunes
 Tetradunes is an exciting game inspired by the classic Sandtrix. In this game, you’ll guide falling blocks of various shapes to fit perfectly into the rows below. Clear rows to score points and avoid letting the blocks reach the top of the screen!
 ---
