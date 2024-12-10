@@ -4,19 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
     <title>Sand Tetris Demo</title>
     <link rel="icon" type="image/png" href="./logo.png">
 
-    <!-- Importing Playwrite Hrvatska Lijeva font from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+HR:wght@100..400&display=swap" rel="stylesheet">
 
-
-    <!-- p5.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"
         integrity="sha512-M7uzkKVt12bO/ClDOwaTk0AUwDPmJzjxri/KQKft2cisI6q3zJ4KxX3IfSQXF9Z6WU6NNW67JAljgWrA4WiiOA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <!-- Inline Styles -->
     <style>
         body {
             font-family: "Playwrite HR", cursive;
@@ -50,7 +47,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #ffd500c0;
+            background-color: #e981b59c;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             width: 544px;
@@ -65,11 +62,12 @@
             font-family: "Playwrite HR", cursive;
             font-size: 4.6rem;
             color: white;
-            text-shadow: 2px 2px 4px rgba(238, 66, 123, 0.815);
+            text-shadow: 4px 4px 8px rgba(238, 66, 123, 0.815);
             text-align: center;
             background: rgba(233, 96, 160, 0.8);
-            padding: 10px;
+            padding: 15px;
             border-radius: 3px;
+            font-weight: bold;
         }
 
         .score-box {
@@ -113,17 +111,18 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
             text-align: center;
+            font-weight: bold;
         }
 
         .button-panel button:hover {
-            background-color: rgba(255, 255, 255, 0.8);
-            color: black;
+            background-color: rgba(241, 181, 209, 0.8);
+            color: rgb(87, 13, 41);
         }
 
         .controls-box {
             position: absolute;
-            top: 250px;
-            left: 840px;
+            top: 190px;
+            right: 920px;
             background-color: rgba(233, 96, 160, 0.8);
             padding: 20px;
             border-radius: 4px;
@@ -133,6 +132,7 @@
             font-size: 1.8rem;
             text-align: left;
             width: 250px;
+            font-weight: bold;
         }
 
         .controls-box ul {
@@ -147,7 +147,7 @@
 
         .controls-box span {
             font-weight: bold;
-            color: #ffd500;
+            color: rgb(87, 13, 41);
         }
     </style>
 </head>
