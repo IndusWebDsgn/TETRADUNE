@@ -8,7 +8,7 @@
     <title>Sand Tetris Demo</title>
     <link rel="icon" type="image/png" href="./logo.png">
 
-    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Playwrite+HR:wght@100..400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+HR:wght@100..400&display=swap" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"
         integrity="sha512-M7uzkKVt12bO/ClDOwaTk0AUwDPmJzjxri/KQKft2cisI6q3zJ4KxX3IfSQXF9Z6WU6NNW67JAljgWrA4WiiOA=="
@@ -16,7 +16,7 @@
 
     <style>
         body {
-            font-family: "Mountains of Christmas", serif;
+            font-family: "Playwrite HR", cursive;
             height: 100vh;
             margin: 0;
             display: flex;
@@ -24,7 +24,7 @@
             align-items: center;
             transform: scale(0.75);
             transform-origin: center;
-            background-image: url('https://marketplace.canva.com/EAFvW8iYy5c/1/0/1600w/canva-blue-christmas-doodlei-illustrative-desktop-wallpaper-RaKRE8fIOjw.jpg');
+            background-image: url('https://marketplace.canva.com/EAFJZ0dhmTQ/1/0/1600w/canva-pink-illustrated-cat-desktop-wallpaper-erWL1KR5XhI.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -34,7 +34,7 @@
             position: absolute;
             top: 0;
             width: 100%;
-            background-color: #9fbe65c5;
+            background-color: #d8c3089c;
         }
 
         .card {
@@ -47,7 +47,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #1074869c;
+            background-color: #e981b59c;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             width: 544px;
@@ -57,15 +57,15 @@
         .game-title {
             position: absolute;
             top: 400px;
-            left: -510px;
+            left: -550px;
             transform: rotate(-90deg);
-            font-family: "Mountains of Christmas", serif;
-            font-size: 6.5rem;
+            font-family: "Playwrite HR", cursive;
+            font-size: 4.6rem;
             color: white;
-            text-shadow: 2px 2px 4px rgba(66, 161, 238, 0.815);
+            text-shadow: 4px 4px 8px rgba(238, 66, 123, 0.815);
             text-align: center;
-            background: rgba(78, 184, 202, 0.8);
-            padding: 10px;
+            background: rgba(233, 96, 160, 0.8);
+            padding: 15px;
             border-radius: 3px;
             font-weight: bold;
         }
@@ -74,7 +74,7 @@
             position: absolute;
             top: -5px;
             right: -281px;
-            background-color: rgba(78, 184, 202, 0.8);
+            background-color: rgba(233, 96, 160, 0.8);
             border-radius: 2px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             width: 280px;
@@ -82,10 +82,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 4.5rem;
+            font-size: 3rem;
             text-align: center;
             font-weight: bold;
-            font-family: "Mountains of Christmas", serif;
+            font-family: "Playwrite HR", cursive;
             color: white;
         }
 
@@ -100,13 +100,13 @@
         }
 
         .button-panel button {
-            font-size: 3.45rem;
+            font-size: 2.85rem;
             padding: 10px;
             border-radius: 2px;
             border: none;
-            background-color: rgba(78, 184, 202, 0.8);
+            background-color: rgba(233, 96, 160, 0.8);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            font-family: "Mountains of Christmas", serif;
+            font-family: "Playwrite HR", cursive;
             color: white;
             cursor: pointer;
             transition: background-color 0.3s ease;
@@ -115,24 +115,24 @@
         }
 
         .button-panel button:hover {
-            background-color: rgba(177, 232, 241, 0.8);
-            color: rgb(17, 78, 88);
+            background-color: rgba(241, 181, 209, 0.8);
+            color: rgb(87, 13, 41);
         }
 
         .controls-box {
             position: absolute;
-            top: 250px;
+            top: 190px;
             right: 920px;
-            background-color: rgba(78, 184, 202, 0.8);
-            padding: 15px;
+            background-color: rgba(233, 96, 160, 0.8);
+            padding: 20px;
             border-radius: 4px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            font-family: "Mountains of Christmas", serif;
+            font-family: "Playwrite HR", cursive;
             color: white;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             text-align: left;
             width: 250px;
-        font-weight: bold;
+            font-weight: bold;
         }
 
         .controls-box ul {
@@ -147,7 +147,7 @@
 
         .controls-box span {
             font-weight: bold;
-            color: rgb(17, 78, 88);
+            color: rgb(87, 13, 41);
         }
     </style>
 </head>
@@ -187,10 +187,10 @@
             console.log("Screenshot functionality coming soon!");
         });
     </script>
-    <script defer src="./christmasplayfield.js"></script>w
-    <script defer src="./christmaspiece.js"></script>
-    <script defer src="./handleinput.js"></script>-
-    <script defer src="./christmasscriptdiff.js"></script>
+    <script defer src="./catplayfield.js"></script>
+    <script defer src="./catpiece.js"></script>
+    <script defer src="./handleinput.js"></script>
+    <script defer src="./catscriptultra.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sand Tetris Demo</title>
+    <link rel="icon" type="image/png" href="./logo.png">
+    <link href='https://fonts.googleapis.com/css?family=Pixelify Sans' rel='stylesheet'>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+    @font-face {
+        font-family: 'Pixelify Sans';
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: scale(0.75);
+        transform-origin: center;
+        background: url('wallpaperflare.com_wallpaper.jpg') center / cover no-repeat;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background-color: rgba(247, 222, 241, 0.76);
+    }
+
+    .card, 
+    #canvasBox, 
+    .score-box, 
+    .button-panel button, 
+    .controls-box {
+        border-radius: 2px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #canvasBox, 
+    .score-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        position: relative;
+    }
+
+    #canvasBox {
+        background-color: #2210869c;
+        width: 544px;
+        height: 964px;
+    }
+
+    .game-title {
+        position: absolute;
+        top: 400px;
+        left: -450px;
+        transform: rotate(-90deg);
+        font-family: 'Pixelify Sans', sans-serif;
+        font-size: 6rem;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        text-align: center;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        border-radius: 2px;
+    }
+
+    .score-box {
+        position: absolute;
+        top: -5px;
+        right: -281px;
+        background-color: rgba(0, 0, 0, 0.8);
+        width: 280px;
+        height: 120px;
+        font-size: 3rem;
+        font-weight: bold;
+        font-family: 'Pixelify Sans', sans-serif;
+        color: white;
+        text-align: center;
+    }
+
+    .button-panel {
+        position: absolute;
+        top: 680px;
+        right: -301px;
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        width: 300px;
+    }
+
+    .button-panel button {
+        font-size: 4rem;
+        padding: 10px;
+        border: none;
+        background-color: rgba(0, 0, 0, 0.8);
+        font-family: 'Pixelify Sans', sans-serif;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-align: center;
+    }
+
+    .button-panel button:hover {
+        background-color: rgba(255, 255, 255, 0.8);
+        color: black;
+    }
+
+    .controls-box {
+        position: absolute;
+        top: 250px;
+        left: 840px;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-family: 'Pixelify Sans', sans-serif;
+        color: white;
+        font-size: 2rem;
+        text-align: left;
+        width: 250px;
+    }
+
+    .controls-box ul {
+        padding: 0;
+        list-style: none;
+    }
+
+    .controls-box li {
+        margin-bottom: 10px;
+        line-height: 1.5;
+    }
+
+    .controls-box span {
+        font-weight: bold;
+        color: #ffd500;
+    }
+
+    @media only screen and (max-width: 1200px) {
+        body {
+            transform: scale(0.9);
+        }
+
+        .controls-box {
+            left: 650px;
+        }
+
+        .button-panel {
+            right: -201px;
+        }
+
+        .score-box {
+            right: -181px;
+        }
+    }
+
+    @media only screen and (max-width: 992px) {
+        body {
+            transform: scale(0.8);
+        }
+
+        .controls-box {
+            left: 500px;
+        }
+
+        .button-panel {
+            right: -151px;
+        }
+
+        .score-box {
+            right: -131px;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        body {
+            transform: scale(1);
+            padding: 20px;
+        }
+
+        .game-title {
+            position: static;
+            transform: none;
+            font-size: 3rem;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #canvasBox {
+            width: 100%;
+            height: auto;
+        }
+
+        .score-box, .button-panel, .controls-box {
+            position: static;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .button-panel {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .button-panel button {
+            width: 100%;
+            margin: 5px 0;
+        }
+    }
+
+    @media only screen and (max-width: 576px) {
+        .controls-box {
+            font-size: 1.5rem;
+        }
+
+        .button-panel button {
+            font-size: 3rem;
+        }
+
+        .score-box {
+            font-size: 2rem;
+        }
+    }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg mb-4"></nav>
+
+    <div class="card">
+        <div class="game-title">
+            TETRADUNES
+        </div>
+        <div class="controls-box">
+            <h3>CONTROLS</h3>
+            <ul>
+                <li><span>↑</span> Rotate Piece</li>
+                <li><span>↓</span> Fall Faster</li>
+                <li><span>←</span> Shift Left</li>
+                <li><span>→</span> Shift Right</li>
+            </ul>
+        </div>
+        <div id="canvasBox"></div>
+        <div class="score-box">
+            SCORE: <span id="scoreui">0</span>
+        </div>
+        <div class="button-panel">
+            <button id="pausebtn">PAUSE</button>
+            <button onClick="window.location.reload();" id="resetbtn">RESTART</button>
+            <button id="scrshotbtn" onclick="location.href='index.html'">HOME</button>
+        </div>
+    </div>
+
+    <script defer src="./playfield.js"></script>
+    <script defer src="./piece.js"></script>
+    <script defer src="./handleinput.js"></script>
+    <script defer src="./setup.js"></script>
+    
+    <script src="./uiHandlersdiff.js"></script>
+
+    <script src="globaldiff.js"></script>
+    <script src="setup1.js"></script>
+    <script src="pieceManagement.js"></script>
+    <script src="gridRules.js"></script>
+    <script src="gameLoop.js"></script>
+</body>
+</html>
